@@ -1,0 +1,133 @@
+% LaTeX Styling
+
+% Front matter is placed before the table of contents, e.g., preface, and has its own settings
+\newcommand{\frontmatter}{
+    \pagenumbering{roman}  % Sets page numbering to lowercase Roman numerals
+}
+
+% This is the main part of the document.
+\newcommand{\mainmatter}{
+    \pagenumbering{arabic}  % Sets page numbering to regular Arabic numerals
+}
+
+% --- Mathematics ---
+\usepackage{bm}                 % Allows for bold text in math mode
+\usepackage{amsmath}            % Enables mathematical formulas and improves typographical quality
+\usepackage{amssymb}            % Expands the symbol collection for mathematics
+\usepackage{amsthm}             % Helps define theorem-like structures
+\usepackage{textcomp}           % Used in the "gensymb" package (below), which issues warnings if "textcomp" is not imported in advance
+\usepackage{gensymb}            % Adds generic symbols for both math and text mode, e.g., \degree
+\usepackage[version=4]{mhchem}  % Package for chemistry chemical formulas
+
+% --- General ---
+\usepackage{caption}        % Provides control over the appearance of captions
+\usepackage{pdfpages}       % Enables the import of PDF pages using, e.g., \includepdf[pages=-]{./my_pdf.pdf}
+\usepackage{url}            % Includes URLs
+\urlstyle{sf}               % Sets the URL style to "sans-serif". Other options are, e.g., "same" or "rm"
+\usepackage[utf8]{inputenc} % Allows the use of UTF-8 character encoding
+\usepackage[T1]{fontenc}    % Considers T1 font encoding for improved character quality
+\usepackage{chngcntr}       % Allows counter adjustment
+\usepackage{appendix}       % Adds support for appendices
+
+% --- Figures and Tables ---
+\usepackage{graphicx}       % Handles images
+\usepackage{wrapfig}        % Text wrapping around images
+\usepackage{subcaption}     % Recommended for sub-figures
+\usepackage{float}          % Forces image placement using "H"
+\usepackage{makecell}       % Offers additional formatting options for table cells
+\usepackage{enumitem}       % List formatting
+\usepackage{array}          % Extends the functionality of table columns for more customization and control
+\usepackage{tabularx}       % Automatic line breaks in tables
+\usepackage{adjustbox}      % Allows for resizing tables
+\usepackage{dcolumn}        % Aids in aligning numbers in tables, especially around decimal points
+\usepackage{listingsutf8}   % Package for displaying program code
+\usepackage{booktabs}       % Enhances table formatting to create more professional and readable tables.
+
+% --- Header and Footer ---
+\usepackage{fancyhdr}                  % Enables customization of the header and footer in the document
+\pagestyle{fancy}
+\fancyhf{}                             % Removes existing header and footer
+\setlength{\headheight}{14.5pt}        % Adjusts the header margin
+\fancyhead[C]{HEADER}
+\setlength{\fancyheadoffset}{0pt}      % No offset for the header line
+\setlength{\fancyfootoffset}{0pt}      % No offset for the footer line
+\renewcommand{\headrulewidth}{0.1ex}   % Line in the header
+\renewcommand{\footrulewidth}{0.1ex}   % Line in the footer
+\fancyfoot[C]{\thepage}                % Placement of page numbers
+\usepackage{lastpage}                  % Provides access to the page number of the last page in the document
+
+% --- Bibliography ---
+\usepackage[backend=biber, style=ext-authoryear, sorting=nty]{biblatex}
+\usepackage[hidelinks]{hyperref}       % Creates links in the table of contents and bibliography
+\addbibresource{ReferenceList.bib}
+
+% --- Appearance and Language ---
+\usepackage[english]{babel}   % Document language
+\usepackage{csquotes}         % Recommended for use with babel
+\usepackage{siunitx}          % Activates SI units
+\usepackage[a4paper]{geometry} % Sets document margins
+\usepackage{setspace}         % Adjusts line spacing
+\linespread{1.5}              % Sets line spacing to 1.5
+\usepackage{microtype}        % Adjusts word spacing
+\hyphenpenalty=100000         % Prevents word hyphenation
+\usepackage{parskip}          % Adds spacing and indentation for paragraphs
+\usepackage{comment}          % Enables the commenting out of content
+\usepackage{times}            % Font family
+
+\usepackage[
+    left = \flqq{},% 
+    right = \frqq{},% 
+    leftsub = \flq{},% 
+    rightsub = \frq{} %
+]{dirtytalk}                   % Package for quotations
+
+\usepackage{titlesec}         % Enables the use of subsubsubsections
+\setcounter{tocdepth}{4}      % Sets the depth of the table of contents
+\setcounter{secnumdepth}{4}   % Sets the depth of section numbering
+
+% Subsubsubsections
+\titleformat{\subsubsubsection}
+{\normalfont\normalsize\bfseries}{\thesubsubsubsection}{1em}{}
+\titlespacing*{\subsubsubsection}
+{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+\newcommand{\subsubsubsection}[1]{\paragraph{#1}\mbox{}\\}
+
+\usepackage{xcolor}
+\definecolor{myBlue}{rgb}{0.39,0.58,0.92}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+% Defines the style for code blocks
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{orange},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+% Sets the style for code blocks
+\lstset{style=mystyle, 
+literate=
+  {æ}{{\ae}}1 {Æ}{{\AE}}1 
+  {ø}{{\o}}1 {Ø}{{\O}}1 
+  {å}{{\r a}}1 {Å}{{\r A}}1
+}
+
+% Renames code listings
+\renewcommand{\lstlistlistingname}{Code Listings}
+\renewcommand{\lstlistingname}{Code Listing}

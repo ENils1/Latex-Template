@@ -1,0 +1,43 @@
+% Hovedfil
+
+\documentclass[a4paper, 12pt, table, english]{article}
+
+\usepackage{Style}  % Egen pakke for formatering
+
+\begin{document}
+
+%% FORSIDE %%
+\include{CoverPage.tex}
+
+\include{Chapters/01Abstract.tex}
+
+%% SAMMENDRAG, FORORD OG LISTER %%
+\frontmatter     % Formatering før hovedinnhold
+
+
+\newpage
+
+{\setstretch{1.0} % Setter linjeavstand i innholdsfortegnelse
+\tableofcontents
+\listoffigures
+\listoftables
+}
+%\include{Chapters/Acronyms}
+
+%% HOVEDDEL %%
+\mainmatter  % Formatering for hovedinnhold
+\include{Chapters/02Symbols}
+\include{Chapters/03Introduction.tex}
+\include{Chapters/04Materials}
+\include{Chapters/05Method.tex}
+\include{Chapters/06Results.tex}
+\include{Chapters/07Discussion.tex}
+\include{Chapters/08Conclusion.tex}
+
+%% REFERANSELISTE %%
+\printbibliography[heading=bibintoc, title=Reference List]
+
+%% VEDLEGG %%
+%\include{Appendices.tex}
+
+\end{document}
